@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block title %}Course{% endblock title %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/display.css' %}">
+{% endblock extra_css%}
+
+{% block content %}
+<div class="main-container">
+    <div class="cards">
+        
+        {% for code,course in courses.items %}
+        <div class="card">
+            <div class="title">
+
+                <p>{{course.meta.title}}</p>
+                <p>Level:{{course.meta.level}}</p>
+            </div>
+            <div class="content">
+                <p>Price:{{course.meta.price}}</p>
+                <button><a href="">Add to cart</a></button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+ 
+{% endblock content %}
