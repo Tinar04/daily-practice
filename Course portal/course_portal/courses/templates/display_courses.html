@@ -13,14 +13,14 @@
         
         {% for code,course in courses.items %}
         <div class="card">
-            <div class="title">
+            <div >
 
-                <p>{{course.meta.title}}</p>
+                <p class="title">{{course.meta.title}}</p>
                 <p>Level:{{course.meta.level}}</p>
             </div>
-            <div class="content">
+            <div class="price">
                 <p>Price:{{course.meta.price}}</p>
-                <button><a href="">Add to cart</a></button>
+                <button><a href="{% url 'details' code %}">Add to cart</a></button>
             </div>
         </div>
         {% endfor %}

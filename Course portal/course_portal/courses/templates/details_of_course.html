@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% if course %}
+{% block title %}{{course.meta.title}}{% endblock title%}
+
+{% else %}
+
+    Not found
+    
+{% endif %}
+
+{% block extra_css%}{% endblock extra_css%}
+
+{% block content %}
+    <div>
+        {% if course %}
+        <div class="meta">
+            
+            <div class="title">Name:{{course.meta.title}}</div>
+            <p>Level:{{course.meta.level}}</p>
+            <p>Price:{{course.meta.price}}</p>
+            <p>duration:{{course.meta.duration}}</p>
+
+        </div>
+        <div class="instructor">
+            <p>Know your instructor</p>
+            <p>Name:{{course.instructor.name}}</p>
+            <p>Experience:{{course.instructor.experience}}</p>
+            <p>Bio:{{course.instructor.info}}</p>
+        </div>
+        <div class="modules">
+            <p>What you will learn</p>
+            <ul>
+
+                {% for module in course.modules %}
+                <li>{{module}}</li>
+                   
+                {% endfor %}
+            </ul>
+
+        </div>
+        {% else %}
+            <p>course not found</p>
+        {% endif %}
+    </div>
+{% endblock content %}

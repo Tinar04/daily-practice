@@ -2,10 +2,55 @@
     display: flex;
     .cards{
         display: flex;
+        justify-content: center;
+        align-items: center;
         flex-wrap: wrap;
+        gap:20px;
+        margin: 50px;
         .card{
             display: flex;
             flex-direction: column;
+            box-shadow: 5px 5px 10px rgb(10, 55, 100);
+            background-color: rgb(103, 168, 232);
+            width: 250px;
+            height: 180px;
+            justify-content: flex-start;
+            gap: 10px;
+            padding: 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: white;
+            .title{
+                font-weight: bolder;
+            }
+            /* font-weight: bold; */
+            .price{
+                display: flex;
+                
+                justify-content: space-between;
+                button {
+                    background-color: rgb(81, 121, 195);
+                    
+                    width: 120px;
+                    margin: 10px;
+                  a{
+                    color: white;
+                    text-decoration: none;
+                    font-size: 16px;
+                    padding: 10px;
+                    font-family: Georgia, 'Times New Roman', Times, serif;
+
+                  }
+                 
+                }
+                button:hover{
+                    width: 130px;
+                    height: 35px;
+                    background-color: white;
+                    a{
+                        color: black;
+                    }
+                }
+            }
         }
     }
 }
