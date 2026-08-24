@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block title  %}
+     {% if book %}
+         {{book.name}}
+     {% else %}
+        NotFound
+     {% endif %}
+{% endblock title %}
+
+<!-- this code displays the details of a single book -->
+
+
+
+
+{% block content %}
+   <div>
+      {% if book %}
+         <h1>Name : {{book.name}}</h1>
+        <p>
+            <strong> ID :</strong> {{book.id}}
+
+        </p>
+        <br>
+         <p>
+            <strong> price :</strong> {{book.price}}
+
+        </p>
+        <br>
+
+         <p>
+            <strong> Author :</strong> {{book.Author}}
+
+        </p>
+        <br>
+         <p>
+            <strong> description :</strong> {{book.description}}
+
+        </p>
+        <br>
+         <p>
+            <strong> Genre :</strong> {{book.genre}}
+
+        </p>
+       
+
+        {% else %}
+           <h1 style="color: red;"> Book not NotFound</h1>
+        {% endif %}
+        
+   </div>
+{% endblock content %}

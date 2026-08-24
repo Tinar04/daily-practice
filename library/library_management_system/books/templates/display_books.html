@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %}Books{% endblock title %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/books.css' %}">
+{% endblock extra_css%}
+
+
+{% block content %}
+<div class="main-cont">
+    <h1>Books Available</h1>
+    
+    <div class="book">
+         {% for book in books %}
+         <p class  = "book-text">
+        <a href="{% url 'details' book.id %}">{{book.name}}</a>
+    </p>
+    {% endfor %}
+    </div>
+   
+    
+</div>
+{% endblock content%}
+

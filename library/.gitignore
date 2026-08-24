@@ -1,0 +1,23 @@
+cat > .gitignore << 'EOF'
+venv/
+.venv/
+env/
+ENV/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.env
+*.env
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+*.log
+EOF
