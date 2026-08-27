@@ -1,0 +1,16 @@
+.main-container{
+    
+    table{
+        border: 2px solid black;
+        th{
+            border: 1px solid black;
+
+        }
+        tr,td{
+           
+            border: 1px solid black;
+        }
+        
+    }
+
+}

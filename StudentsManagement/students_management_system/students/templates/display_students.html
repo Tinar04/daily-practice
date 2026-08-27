@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Students
+{% endblock title %}
+
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/display_students.css' %}">
+{% endblock extra_css%}
+
+
+
+{% block content %}
+   <div class="main-container">
+       <table>
+            <th>SNO.</th>
+            <th>Student name</th>
+            <th>Student age</th>
+            <th>Student roll_no</th>
+            <th>student marks</th>
+            <th>Student subject</th>
+            <th>Action</th>
+
+            <tbody>
+                {% for student in students %}
+                <tr>
+                       <td>{{forloop.counter}}</td>
+                    
+                    <td>
+                    {{student.name}}
+                   </td>
+
+                   <td>{{student.age}}</td>
+
+                   <td>{{student.roll}}</td>
+
+                   <td>{{student.marks}}</td>
+
+                   <td>{{student.subject}}</td>
+
+                   <td>
+                    <div class="btn">
+                        <a href="{% url 'update' student.id %}">update</a>
+                        <a href="">delete</a>
+                    </div>
+                   </td>
+                
+                
+                </tr>
+                {% endfor %}
+            </tbody>
+       </table>
+   </div>
+{% endblock content%}

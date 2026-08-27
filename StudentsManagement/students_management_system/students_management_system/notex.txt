@@ -1,0 +1,5 @@
+redirect always converts http post to get , read abput this
+
+use this whenever we are using any unsafe method to change it into get again 
+we dont want to use the post again 
+

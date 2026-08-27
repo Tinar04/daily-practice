@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title%}{% endblock title %}
+
+
+{% block content %}
+
+<div class="main-container">
+     <form method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="Enter name" name = "name" value =  {{student.name}}>
+        <br>
+        <input type="text" placeholder="Enter age" name = "age" value =  {{student.age}}>
+        <br>
+        <input type="text" placeholder="Enter roll" name = "roll"value =  {{student.roll}}>
+        <br>
+        <input type="text" placeholder="Enter marks" name = "marks"value =  {{student.marks}}>
+        <br>
+        <input type="text" placeholder="Enter subject" name = "subject" value = {{student.subject}}>
+        <br>
+        <button type="submit"> update Student</button>
+
+   </form>
+
+
+</div>
+
+{% endblock content%}
