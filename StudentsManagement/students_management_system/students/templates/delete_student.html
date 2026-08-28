@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {%  if student %}
+      {{student.name}}
+    {% else %}
+        Not Found
+  {% endif %}
+{% endblock title %}
+
+
+{% block content %}
+      <div>
+           <form method="post">
+               {% csrf_token %}
+               <h1>Are you sure you want to delete {{student.name}}'s record</h1>
+               <div class="btn">
+                <button type="submit">Delete</button>
+
+                <button> <a href="{%url 'display' %}"> Cancel </a></button>
+               </div>
+           </form>
+      </div>
+{% endblock content%}

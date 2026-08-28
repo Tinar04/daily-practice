@@ -60,3 +60,27 @@ def update_student_view(request,student_id):
     return render(request,'update_student.html',context)
 
 
+def delete_student_view(request,student_id):
+    try:
+        student = Students.objects.get(id = student_id)
+    except Students.DoesNotExist :
+        return HttpResponse(
+                    '''
+                    <h1 "style= color:red;">Student not found</h1>
+        
+                    '''
+                )
+
+    if request.method == "POST":
+        student.delete()
+        return redirect('display')
+
+    
+    context = {
+        'student':student
+    }
+    return render(request,'delete_student.html',context)
+
+        
+
+
