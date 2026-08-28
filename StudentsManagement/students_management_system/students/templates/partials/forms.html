@@ -1,0 +1,19 @@
+<div class="main-container">
+     <form method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="Enter name" name = "name" value =  {{student.name}} required>
+        <br>
+        <input type="text" placeholder="Enter age" name = "age" value =  {{student.age}} required>
+        <br>
+        <input type="text" placeholder="Enter roll" name = "roll"value =  {{student.roll}} required>
+        <br>
+        <input type="text" placeholder="Enter marks" name = "marks"value =  {{student.marks}} required>
+        <br>
+        <input type="text" placeholder="Enter subject" name = "subject" value = {{student.subject}} required>
+        <br>
+        <button type="submit">{{operation}}</button>
+
+   </form>
+
+
+</div>

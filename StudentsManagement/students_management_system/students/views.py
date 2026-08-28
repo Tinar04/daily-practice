@@ -19,13 +19,18 @@ def create_students_view(request):
             subject = subject
         )
         return redirect("display")
+
+    context = {
+        'operation':'Create student', 
+    }
     return render(request,'create_student.html')
 
 def display_students_view(request):
     Student = Students.objects.all()
 
     context = {
-        'students':Student
+        'students':Student,
+        
     }
     return render(request,'display_students.html',context)
 
@@ -54,7 +59,8 @@ def update_student_view(request,student_id):
         return redirect('display')
 
     context = {
-        'student':student
+        'student':student,
+        'operation':'Update Student',
     }
 
     return render(request,'update_student.html',context)
