@@ -22,6 +22,7 @@
             <th>Student roll_no</th>
             <th>student marks</th>
             <th>Student subject</th>
+            <th>Emai l</th>
             <th>Action</th>
 
             <tbody>
@@ -41,13 +42,16 @@
 
                    <td>{{student.subject}}</td>
 
+                   <td>{{student.email}}</td>
+                   
+                   
                    <td>
-                    <div class="btn">
-                        <a href="{% url 'update' student.id %}">update</a>
-                        <a href="{% url 'delete' student.id %}">delete</a>
-                    </div>
-                   </td>
-                
+                       <div class="btn">
+                           <a href="{% url 'update' student.id %}">update</a>
+                           <a href="{% url 'delete' student.id %}">delete</a>
+                        </div>
+                    </td>
+                    
                 
                 </tr>
                 {% endfor %}

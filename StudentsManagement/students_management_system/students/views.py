@@ -10,13 +10,15 @@ def create_students_view(request):
         roll= request.POST.get('roll',' ')
         marks = request.POST.get('marks',' ')
         subject = request.POST.get('subject',' ')
+        email = request.POST.get('email','')
 
         Students.objects.create(
             name = name,
             age = age,
             roll = roll,
             marks = marks,
-            subject = subject
+            subject = subject,
+            email = email
         )
         return redirect("display")
 
@@ -53,6 +55,7 @@ def update_student_view(request,student_id):
         student.roll = request.POST.get('roll',student.roll)
         student.marks = request.POST.get('marks',student.marks)
         student.subject = request.POST.get('subject',student.subject)
+        student.email = request.POST.get('email',student.email)
 
         student.save()
 
