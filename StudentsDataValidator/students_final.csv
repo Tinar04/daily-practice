@@ -1,0 +1,11 @@
+name,age,grade,is_pass,marks,scholarship,fees,city,pincode
+Riya Sharma,20,10,true,88.5,500,5000,Bengaluru,560001
+Arjun Mehta,22,11,true,76.0,4500,4500,Kolkata,700016
+Sneha Kulkarni,twenty,9,true,91.2,300,6000,Pune,411004
+Karan Verma,21,8,false,65.5,3500,3000,Gurugram,122001
+Meera Iyer,19,12,true,110.0,700,7000,Chennai,600002
+Rohan Das,,10,true,72.3,200,5200,Kolkata,700091
+Ananya Singh,23,7,false,58.9,100,4800,Lucknow,226001
+Vikram Rao,-5,11,true,83.4,400,5300,Bengaluru,560011
+Priya Nair,17,3,false,45.0,50,4100,Kochi,68201
+Aditya Kumar,20,10,true,79.8,250,4900,Hyderabad,500034

@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Riya Sharma",
+    "age": 20,
+    "grade": 10,
+    "is_pass": true,
+    "marks": 88.5,
+    "scholarship": 500.0,
+    "fees": 5000.0,
+    "address": {
+      "city": "Bengaluru",
+      "pincode": "560001"
+    },
+    "check_fees": 4500.0
+  },
+  {
+    "name": "Arjun Mehta",
+    "age": 22,
+    "grade": 11,
+    "is_pass": true,
+    "marks": 76.0,
+    "scholarship": 4500.0,
+    "fees": 4500.0,
+    "address": {
+      "city": "Kolkata",
+      "pincode": "700016"
+    },
+    "check_fees": 0.0
+  },
+  {
+    "name": "Ananya Singh",
+    "age": 23,
+    "grade": 7,
+    "is_pass": false,
+    "marks": 58.9,
+    "scholarship": 100.0,
+    "fees": 4800.0,
+    "address": {
+      "city": "Lucknow",
+      "pincode": "226001"
+    },
+    "check_fees": 4700.0
+  },
+  {
+    "name": "Aditya Kumar",
+    "age": 20,
+    "grade": 10,
+    "is_pass": true,
+    "marks": 79.8,
+    "scholarship": 250.0,
+    "fees": 4900.0,
+    "address": {
+      "city": "Hyderabad",
+      "pincode": "500034"
+    },
+    "check_fees": 4650.0
+  }
+]
