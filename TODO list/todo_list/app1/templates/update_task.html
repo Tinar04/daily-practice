@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Update page{% endblock title %}
+
+
+{% block taskfield %}
+
+<div class="main-container">
+    <form  method="post">
+        {% csrf_token %}
+
+        {{form.as_p}}
+
+        <button type="submit">update task</button>
+    </form>
+</div>
+
+
+{% endblock taskfield %}
