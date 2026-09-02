@@ -1,0 +1,23 @@
+body{
+
+    margin: 0;
+    display: grid;
+    min-height: 40vh;
+}
+
+.main-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    table{
+        border: 2px solid black;
+        th{
+            border: 1px solid black;
+        }
+        tbody tr td{
+            border: 1px solid black;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Employee Table {% endblock title %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/display.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+ <div class="main-container">
+    <table>
+        <th>S.no</th>
+        <th>Employee Name</th>
+        <th>Department</th>
+        <th>salary</th>
+        <th>email</th>
+        <th>Action</th>
+        
+        <tbody>
+            {% for employee in employees %}
+            <tr><td>{{forloop.counter}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.department}}</td>
+                <td>{{employee.salary}}</td>
+                <td>{{employee.email}}</td>
+                <td>
+
+                    <div class="btn">
+                        <button><a href="{% url 'update' employee.id%}">Update</a></button>
+                        <button><a href="">Delete</a></button>
+                    </div>
+                </td>
+
+            
+            
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+ </div>
+{% endblock content %}

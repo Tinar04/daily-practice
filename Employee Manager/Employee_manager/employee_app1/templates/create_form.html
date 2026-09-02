@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Create Employee{% endblock title %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="">
+{% endblock extra_css%}
+
+{% block content %}
+
+ <div class="main-container">
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <button type = "submit"> Add Employee </button>
+    </form>
+ </div>
+{% endblock content %}
