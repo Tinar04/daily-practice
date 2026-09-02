@@ -3,42 +3,49 @@
 
 {% block title %}Tasks{% endblock title %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/task_page.css' %}">
+{% endblock extra_css%}
+
 
 {% block taskfield %}
 
 <div class="main-container">
-    <form action="" method="post">
-        {% csrf_token %}
 
-        {{form}}
-
-        <button type="submit">Add task</button>
-    </form>
-</div>
-
-
-
-<div class="cards">
-    {% for task in tasks %}
-    <div class="card">
-        <div class="head">
-            {{task.task_name}}
-        </div>
-        <div class="description">
-            {{task.task_description}}
-        </div>
-         <div class="status">
-            {{task.status}}
-        </div>
-
-        <div class="btn">
-            <button><a href="{% url 'update' task.id %}">update</a></button>
-            <button><a href="{% url 'delete' task.id %}">Delete</a></button>
-        </div>
+    <div class="form-container">
+        <form action="" method="post">
+            {% csrf_token %}
+            
+            {{form.as_p}}
+            
+            <button type="submit">Add task</button>
+        </form>
     </div>
-    {% endfor %}
-</div>
     
+    
+    
+    <div class="cards">
+        {% for task in tasks %}
+        <div class="card">
+            <div class="head">
+                {{task.task_name}}
+            </div>
+            <div class="description">
+                {{task.task_description}}
+            </div>
+            <div class="status">
+                {{task.status}}
+            </div>
+            
+            <div class="btn">
+                <button class="update"><a href="{% url 'update' task.id %}">update</a></button>
+                <button class="delete"><a href="{% url 'delete' task.id %}">Delete</a></button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+</div>
 {% endblock taskfield %}
 
 

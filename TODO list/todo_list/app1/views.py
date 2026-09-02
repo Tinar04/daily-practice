@@ -19,19 +19,6 @@ def task_form_view(request):
                 status = form.cleaned_data['status']
             )
 
-        task = Task_Model.objects.all() 
-        print(task,"hellooooooo") 
-        form=Task_Form()
-          
-        context = {
-            'tasks':task,
-            'form':form,
-            
-        }
-                
-        return render(request,'Task_page.html',context)
-
-   
     form=Task_Form()
     task = Task_Model.objects.all()
     print("inside get method...")

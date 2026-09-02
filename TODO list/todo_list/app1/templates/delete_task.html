@@ -1,14 +1,57 @@
 <html>
-    <body>
-        
-        <form method="post">
-            {% csrf_token %}
-            <p>are you sure you want to delete  {{task.task_name}} ?? </p>
+  <head>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background-color: #e0f2f4;
+      }
+      .form-container{
+        display: flex;
+        flex-direction: column;
+        background-color: #0077B6;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        .msg{
+             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            text-transform: capitalize;
+            font-weight: bolder;
+            color: whitesmoke;
+        }
+        .btn{
+            button{
+               background-color: #03045E;
+               text-transform: capitalize;
+               color: white; 
+               a{
+                text-transform: capitalize;
+                    text-decoration: none;
+                    /* font-weight: bold; */
+                    color: whitesmoke;
+               }
+            }
 
-            <div class="btn">
-                <button type="submit">Delete</button>
-                <button><a href="{% url 'task_form' %}">Cancel</a></button>
-            </div>
-        </form>
-    </body>
+        }
+
+      }
+      
+      
+    </style>
+  </head>
+  <body>
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-container">
+        <div class="msg"><p>are you sure you want to delete {{task.task_name}} ??</p></div>
+
+        <div class="btn">
+          <button type="submit">Delete</button>
+          <button><a href="{% url 'task_form' %}">Cancel</a></button>
+        </div>
+      </div>
+    </form>
+  </body>
 </html>

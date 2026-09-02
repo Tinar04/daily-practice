@@ -4,10 +4,13 @@
 
 {% block title %}Update page{% endblock title %}
 
+{% block extra_css%}
+<link rel="stylesheet" href="{% static 'css/task_page.css' %}">
+{% endblock extra_css %}
 
 {% block taskfield %}
 
-<div class="main-container">
+<div class="form-container">
     <form  method="post">
         {% csrf_token %}
 

@@ -17,7 +17,9 @@ class Task_Form(forms.ModelForm):
             ),
             'task_description':forms.TextInput(
                 attrs={
-                    'placeholder':"Descripe your goal"
+                    'placeholder':"Descripe your goal",
+                    # 'row':2,
+                    # "column":10,
                 }
             )
         }

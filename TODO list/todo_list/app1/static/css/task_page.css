@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: #e0f2f4;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+
+}
+
+.form-container {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid pink; */
+    padding: 20px;
+    background-color: #0077B6;
+    color: whitesmoke;
+    font-weight: bolder;
+
+    text-transform: capitalize;
+
+    button {
+        background-color: #03045E;
+        text-transform: capitalize;
+        text-decoration: none;
+        /* font-weight: bold; */
+        color: whitesmoke;
+    }
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    /* border: 2px solid black; */
+    gap: 20px;
+    padding: 20px;
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+
+        box-shadow: 5px 5px 10px #BAD6DA;
+        width: 170px;
+        height: 200px;
+        /* border: 2px solid yellow ; */
+        background-color: #0077B6;
+        justify-content: center;
+        align-items: center;
+
+        .head {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            text-transform: capitalize;
+            font-weight: bolder;
+            color: whitesmoke;
+        }
+
+        .description {
+            color: whitesmoke;
+            font-weight: bold;
+        }
+
+        .status {
+            font-weight: bold;
+            color: whitesmoke;
+        }
+
+
+
+
+        .btn {
+            display: flex;
+            gap: 10px;
+
+            .update {
+                background-color: #03045E;
+
+                a {
+                    text-transform: capitalize;
+                    text-decoration: none;
+                    /* font-weight: bold; */
+                    color: whitesmoke;
+                }
+            }
+
+            .delete {
+                background-color: #03045E;
+
+                a {
+                    text-transform: capitalize;
+                    text-decoration: none;
+                    /* font-weight: bold; */
+                    color: whitesmoke;
+                }
+            }
+
+
+        }
+    }
+}
