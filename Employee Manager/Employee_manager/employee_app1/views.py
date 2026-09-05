@@ -63,3 +63,26 @@ def update_employee_View(request,emp_id):
     }
 
     return render(request,'update_employee.html',context)
+
+
+#delete operation
+
+def delete_employee_view(request,emp_id):
+    try:
+        employee= EmployeeModel.objects.get(id= emp_id)
+    except:
+        return HttpResponse('''
+        
+               <h1 "style = color:red; ">Employee Not Found </h1>
+             ''')
+    if request.method =='POST':
+        employee.delete()
+        return redirect("display")
+
+    context = {
+        'employee':employee
+    }
+
+    return render(request,'delete_employee.html',context)
+
+

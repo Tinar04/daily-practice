@@ -7,6 +7,9 @@
 {% endblock extra_css %}
 
 {% block content %}
+<div class="add-btn">
+    <button><a href="{% url 'create' %}">Add Employee</a></button>
+</div>
  <div class="main-container">
     <table>
         <th>S.no</th>
@@ -27,7 +30,7 @@
 
                     <div class="btn">
                         <button><a href="{% url 'update' employee.id%}">Update</a></button>
-                        <button><a href="">Delete</a></button>
+                        <button><a href="{% url 'delete' employee.id%}">Delete</a></button>
                     </div>
                 </td>
 
