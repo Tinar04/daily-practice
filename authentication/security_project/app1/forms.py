@@ -58,10 +58,38 @@ class RergisterUser(forms.ModelForm):
         username = cleaned_data.get('username')
         email = cleaned_data.get('email')
 
-        temp_user = User(username=username,email = email)
+        temp_user = User(username=username,email = email)   #just for checking purpose 
 
         try:
             validate_password(pwd,user= temp_user)
         except djangovalidationError as error:
             raise forms.ValidationError(error)
         return pwd
+
+    def clean(self):
+        attrs = super().clean()
+
+        pwd = attrs.get('password')
+        con_pwd = attrs.get('confirm_password')
+
+        if pwd!= con_pwd:
+            self.add_error('confirm_password','password mismatch')
+
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(
+        widget  = forms.TextInput(
+            attrs={
+                'placeholder':'Enter the  username'
+            }
+        )
+    )
+
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder':'Enter the passsword'
+            }
+        )
+    )

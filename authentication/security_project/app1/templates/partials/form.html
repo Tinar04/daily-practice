@@ -1,5 +1,11 @@
 <form  method="post">
     {%csrf_token%}
+
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+        <p style="color: red;">{{error}}</p>
+    {% endfor%}
+    {% endif %}
     {% for field in form %}
     <div>
         <label for="">{{field.label}}</label>
