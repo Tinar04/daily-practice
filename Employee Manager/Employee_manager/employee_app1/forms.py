@@ -2,13 +2,14 @@ from django import forms
 from .models import EmployeeModel
 
 
+
 class EmployeeForm(forms.ModelForm):
     class Meta:
         model = EmployeeModel
         fields = '__all__'
 
 
-        lables = {
+        labels = {
             'name' : 'Employee Name',
             'department':'Choose Your Department',
             'salary':'Employee Salary',
@@ -42,9 +43,11 @@ class EmployeeForm(forms.ModelForm):
             'email':"enter a valid domain name eg 'dcl.in' "
         }
 
-        error_message = {
+        error_messages = {
             'email':{
                 'unique':'A employee with same email already exists',
                 'domain':'This domain in not valid in company'
             }
         }
+
+

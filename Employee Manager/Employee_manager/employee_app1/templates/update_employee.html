@@ -10,11 +10,6 @@
 {% block content %}
 
  <div class="main-container">
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-
-        <button type = "submit"> Update Employee </button>
-    </form>
+   {% include 'partials/form.html' %}
  </div>
 {% endblock content %}

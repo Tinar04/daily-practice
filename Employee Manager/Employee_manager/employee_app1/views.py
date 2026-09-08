@@ -4,6 +4,9 @@ from .forms import EmployeeForm
 from django.http import  HttpResponse
 
 # display view
+
+
+
 def display_employee_view(request):
     employee = EmployeeModel.objects.all()
 
@@ -24,7 +27,8 @@ def create_employee_view(request):
         form = EmployeeForm()
 
     context = {
-        'form':form
+        'form':form,
+        'operation':'Add Employee'
     }
 
     return render(request,'create_form.html',context)
@@ -59,7 +63,8 @@ def update_employee_View(request,emp_id):
     form = EmployeeForm(data = currentdata)
 
     context = {
-        'form':form
+        'form':form,
+        'operation':'Update Employee'
     }
 
     return render(request,'update_employee.html',context)
