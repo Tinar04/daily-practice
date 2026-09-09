@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
 from .forms import RegisterUser,Login_form
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -44,5 +45,6 @@ def registration_view(request):
         'operation':'Register',
     }
     return render(request,'register.html',context)
+
 
 
