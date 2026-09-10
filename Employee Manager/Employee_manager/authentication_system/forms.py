@@ -60,6 +60,20 @@ class RegisterUser(forms.ModelForm):
 
         return pwd
 
+    # validation to check if both cpassword and confirm passwors are same or not
+
+    def clean(self):
+        cleaned_data = super().clean()
+        pwd = cleaned_data.get('password')
+        pwd2 = cleaned_data.get('confirm_password')
+
+
+        if pwd and pwd2 and pwd!=pwd2 :
+            self.add_error('confirm_password','password does not match!!!')
+
+        return cleaned_data
+
+
 
 class Login_form(forms.Form):
     username = forms.CharField(

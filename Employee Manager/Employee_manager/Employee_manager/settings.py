@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core_pages',
     'authentication_system',
     'employee_app1',
 ]
@@ -77,7 +78,7 @@ WSGI_APPLICATION = 'Employee_manager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'employee_manager_db',
+        'NAME': 'employee_schema',
         'USER':'root',
         'PASSWORD':'root',
         'HOST':'127.0.0.1',
