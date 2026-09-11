@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Department(models.Model):
@@ -8,6 +9,7 @@ class Department(models.Model):
         return self.d_name
 
 class Employee(models.Model):
+    username = models.OneToOneField(User,on_delete=models.CASCADE,null = True)
     name = models.CharField(max_length=100)
     salary = models.DecimalField(max_digits=10,decimal_places=2)
     email = models.EmailField(unique=True)
@@ -30,6 +32,10 @@ class Project(models.Model):
     deadline = models.DateField()
     status = models.CharField(max_length=20,choices=[('ongoing','ongoing'),('completed','completed')])
     employee = models.ManyToManyField('Employee')
+
+    def __str__(self):
+            return self.p_name
+    
 
 
 

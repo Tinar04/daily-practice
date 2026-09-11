@@ -5,11 +5,10 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from employee_app1.models import Employee 
+from .custome import role_required
 
-# Create your views here.
-
-#login view
-
+# Genral Login form for all type of userss
 def login_view(request):
     if request.method == "POST":
         form = Login_form(request.POST)
@@ -20,9 +19,18 @@ def login_view(request):
 
             user = authenticate(request,username = username,password = password)
 
-            if user is not None:
+            if user!=None:
                 login(request,user)
-                return redirect('home')
+                role = user.employee.role
+                if role =='employee':
+                    return redirect('home')
+                else:
+                    return redirect('home')
+            else:
+                form.add_error(None,"Invalid credentials")
+        else:
+            print("validation failed")            
+
 
     else:
         form = Login_form()   #unbounded form
@@ -33,8 +41,16 @@ def login_view(request):
     }
     return render(request,'login.html',context)
 
+
+
+# ----- Crud For Admin auth_user table---------
+
+
+# Add User in auth_user table
+
 @login_required
-def registration_view(request):
+@role_required
+def add_employee_view(request):
     if request.method == 'POST':
         form = RegisterUser(data=request.POST)
         if form.is_valid():
@@ -60,10 +76,6 @@ def registration_view(request):
     }
 
     return render(request,'register.html',context)
-
-
-
-
 
 
 

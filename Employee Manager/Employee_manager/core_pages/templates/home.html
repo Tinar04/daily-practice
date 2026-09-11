@@ -1,4 +1,4 @@
-<!-- {% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Home Page{% endblock title %}
 
@@ -8,6 +8,7 @@
 
 {% block content %}
 
- <h1>Welcome Home {{request.user.username}}</h1>  
+ <h1>Welcome To the {{request.user.employee.role}} Home {{request.user.username}}</h1>  
+
  <button><a href="{% url 'logout' %}">Logout</a></button>   
-{% endblock content %} -->
+{% endblock content %}

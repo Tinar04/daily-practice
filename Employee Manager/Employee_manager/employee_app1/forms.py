@@ -1,11 +1,12 @@
 from django import forms
-from .models import EmployeeModel
+from .models import Employee
+import re
 
 
 
 class EmployeeForm(forms.ModelForm):
     class Meta:
-        model = EmployeeModel
+        model = Employee
         fields = '__all__'
 
 
@@ -51,3 +52,25 @@ class EmployeeForm(forms.ModelForm):
         }
 
 
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+
+        
+        pattern = r"^[A-Za-z]+ [A-Za-z]+$"
+
+        if not re.match(pattern,name):
+            print('error')
+            raise forms.ValidationError("please Enter a valid name")
+
+        return name
+
+
+    def clean_salary(self):
+        salary = self.cleaned_data.get('salary')
+
+        if salary<=0:
+            print('errorr')
+            raise forms.ValidationError("Salary cant be negative")
+
+        return salary
+    

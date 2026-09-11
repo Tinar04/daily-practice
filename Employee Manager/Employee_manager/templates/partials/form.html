@@ -10,9 +10,9 @@
 
         {% for field in form %}
                 {{field}}
+                
                 {% for error in field.errors %}
                     {{error}}
-
                 {% endfor %}
         {% endfor %}
 
