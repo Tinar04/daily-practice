@@ -58,4 +58,17 @@
         </tbody>
     </table>
  </div>
+
+ <div class="pagination">
+    {% if employees.has_previous %}
+        <a href="?page={{ employees.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    <span>Page {{ employees.number }} of {{ employees.paginator.num_pages }}</span>
+
+    {% if employees.has_next %}
+        <a href="?page={{ employees.next_page_number }}">Next</a>
+    {% endif %}
+</div>
+ 
 {% endblock content %}

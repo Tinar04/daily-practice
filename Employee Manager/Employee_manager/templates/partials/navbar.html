@@ -1,3 +1,4 @@
+{% if request.resolver_match.url_name != 'login' %}
 <nav>
     {% if request.user.employee.role == 'admin' %}
         <a href="{% url 'admin-home' %}">Home</a>
@@ -14,3 +15,4 @@
         <button type="submit">Logout</button>
     </form>
 </nav>
+{% endif %}

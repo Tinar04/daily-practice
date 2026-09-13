@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from authentication_system.custome import role_required
 from .models import Employee,Department,Project
 from django.http import HttpResponse
+from django.core.paginator import Paginator
 # -----Employee Table Crud For Admin---------
 
 
@@ -24,8 +25,12 @@ def display_employee_view(request):
     if department_id:
         employee = employee.filter(department_id=department_id)
 
+    paginator = Paginator(employee, 5)   # 5 employees per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        'employees': employee,
+        'employees': page_obj, 
         'departments': departments
     }
     return render(request, 'display_employee.html', context)
