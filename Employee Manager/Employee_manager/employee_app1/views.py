@@ -1,8 +1,8 @@
-from .forms import EmployeeForm
+from .forms import EmployeeForm,DepartmentForm
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from authentication_system.custome import role_required
-from .models import Employee
+from .models import Employee,Department
 from django.http import HttpResponse
 # -----Employee Table Crud For Admin---------
 
@@ -72,7 +72,7 @@ def update_employee_view(request,emp_id):
         'operation':'Update'
     }
 
-    return render(request,'update_employee.html',context)
+    return render(request,'update.html',context)
 
 
 #-----delete---------
@@ -84,7 +84,100 @@ def delete_employee_view(request,emp_id):
         return HttpResponse("Employee Not Found")
 
     if request.method == "POST":
+        employee.username.delete()   #delete from auth_user as well
         employee.delete()
-        return redirect('home')
+        return redirect('display_emp')
+    context = {
+        'object':employee.name
+    }
 
-    return render(request,'delete_employee.html')
+    return render(request,'delete.html')
+
+# -----Department Table Crud For Admin---------
+
+# show all tables
+
+def department_list(request):
+    department = Department.objects.all()
+    print(department)
+
+
+    context = {
+        'departments':department
+    }
+
+    return render(request,'department.html',context)
+
+# add department
+
+def create_department(request):
+
+    if request.method =="POST":
+        form= DepartmentForm(data=request.POST)
+
+        if form.is_valid():
+            form.save()
+            print("data stroed succefully")
+            return redirect('display_table')
+        else:
+            print("validation failed")
+    else:
+        form = DepartmentForm() #unbounded form
+          
+            
+
+    context = {
+        'form':form,
+        'operation':'Add department'
+    }
+
+    return render(request,'create_form.html',context)
+
+
+
+
+
+#update on deparment table---------------------------
+
+def update_department(request,dept_id):
+    try:
+        department = Department.objects.get(id = dept_id)
+    except Department.DoesNotExist:
+        return HttpResponse("Department not found")
+        
+    if request.method=='POST':
+        form = DepartmentForm(request.POST,instance= department)
+
+        if form.is_valid():
+            form.save()
+            return redirect('display_table')
+    else:
+        form = DepartmentForm(instance=department)
+    context = {
+        'form':form,
+        'operation':'Update department',
+    }
+
+    return render(request,'update.html',context)
+
+# -----delete-----
+
+def delete_department(request,dept_id):
+
+    try:
+        department = Department.objects.get(id = dept_id)
+    except Department.DoesNotExist:
+        return HttpResponse("Department not found")
+
+    if request.method == "POST":
+
+        department.delete()
+        return redirect('display_table')
+    context = {
+        'object':department.d_name
+    }
+    return render(request,'delete.html',context)
+
+    
+
+        

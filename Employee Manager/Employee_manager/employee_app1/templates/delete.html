@@ -3,7 +3,7 @@
         
         <form  method="post">
             {% csrf_token %}
-            <h1>Are you sure you want to delete {{employee.name}}'s record </h1>
+            <h1>Are you sure you want to delete {{object}}'s record </h1>
             <button type="submit">Delete</button>
             <button type="button"><a href="{% url 'home' %}">Cancel</a></button>
         </form>

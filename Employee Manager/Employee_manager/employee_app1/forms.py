@@ -1,5 +1,5 @@
 from django import forms
-from .models import Employee
+from .models import Employee,Department
 import re
 
 
@@ -73,4 +73,34 @@ class EmployeeForm(forms.ModelForm):
             raise forms.ValidationError("Salary cant be negative")
 
         return salary
+
+
+class DepartmentForm(forms.ModelForm):
+    class Meta:
+        model = Department
+        fields = ['d_name']
+
+        labels = {
+            'd_name':'Department name'           
+       }
+        widgets= {
+            'd_name':forms.TextInput(
+                attrs={
+                    'placeholder':'Enter name',
+                }
+            )
+        }
+
+
+
+    def clean_d_name(self):
+            d_name = self.cleaned_data.get('d_name')
     
+            
+            pattern = r"^[A-Za-z]+ [A-Za-z]+$"
+    
+            if not re.match(pattern,d_name):
+                print('error')
+                raise forms.ValidationError("please Enter a valid name")
+    
+            return d_name

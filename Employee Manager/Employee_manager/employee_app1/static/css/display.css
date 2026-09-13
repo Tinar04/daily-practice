@@ -12,11 +12,18 @@ body{
     width: 100%;
 
     table{
+        
+        
+       
+        
         border: 2px solid black;
         th{
             border: 1px solid black;
         }
         tbody tr td{
+            text-align: center;
+            
+   
             border: 1px solid black;
         }
     }
