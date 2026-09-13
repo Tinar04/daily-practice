@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}project.p_name{% endblock title %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="">
+{% endblock extra_css%}
+
+{% block content %}
+
+ <div class="main-container">
+    <h1>{{project.p_name}}</h1>
+   <div class="titles">
+    <ul>
+        <li>Status</li>
+        <li>Start-date</li>
+        <li>deadline</li>
+    </ul>
+   </div>
+   <div class="details">
+    <li>{{project.status}}</li>
+    <li>{{project.start_date}}</li>
+    <li>{{project.deadline}}</li>
+    
+
+   </div>
+   <div class="employees">
+    <ul>
+
+        {% for employee in project.employee.all %}
+    <li>{{ employee.name }}</li>
+       {% endfor %}
+    </ul>
+
+   </div>
+   <div class="btns">
+    <button><a href="{% url 'update_project' project.id %}">Update project</a></button>
+    <button><a href="{% url 'delete_project' project.id %}">delete project</a></button>
+   </div>
+ </div>
+{% endblock content %}

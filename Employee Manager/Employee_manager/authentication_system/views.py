@@ -23,9 +23,9 @@ def login_view(request):
                 login(request,user)
                 role = user.employee.role
                 if role =='employee':
-                    return redirect('home')
+                    return redirect('admin-home')
                 else:
-                    return redirect('home')
+                    return redirect('admin-home')
             else:
                 form.add_error(None,"Invalid credentials")
         else:

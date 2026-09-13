@@ -1,0 +1,31 @@
+body{
+
+    margin: 0;
+    display: grid;
+    min-height: 40vh;
+}
+
+.Projects-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+    table{
+        
+        
+       
+        
+        border: 2px solid black;
+        th{
+            border: 1px solid black;
+        }
+        tbody tr td{
+            text-align: center;
+            
+   
+            border: 1px solid black;
+        }
+    }
+}

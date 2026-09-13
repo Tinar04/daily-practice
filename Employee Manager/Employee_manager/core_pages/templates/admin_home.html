@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home Page{% endblock title %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/display.css' %}">
+{% endblock extra_css %}
+
+
+
+{% block content %}
+<h2>Admin Home page</h2>
+
+<div class = "Projects-section">
+    <table>
+        <h4>Projects</h4>
+        <th>Name</th>
+        <th>Status</th>
+        <tbody>
+            {% for project in Projects %}
+            {{project.id}}
+                <tr>
+                    <td><button><a href="{% url 'project_detail' project.id %}">{{project.p_name}}</a></button></td>
+                    <td>{{project.status}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+  
+{% endblock content %}

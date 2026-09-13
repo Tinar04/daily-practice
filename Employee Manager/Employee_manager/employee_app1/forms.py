@@ -1,8 +1,8 @@
 from django import forms
-from .models import Employee,Department
+from .models import Employee,Department,Project
 import re
-
-
+from django.core.exceptions import ValidationError
+from django.utils import timezone
 
 class EmployeeForm(forms.ModelForm):
     class Meta:
@@ -104,3 +104,65 @@ class DepartmentForm(forms.ModelForm):
                 raise forms.ValidationError("please Enter a valid name")
     
             return d_name
+
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = '__all__'
+
+        labels = {
+            'p_name':'Project Name',
+            'start_date':'Starting date',
+            'deadline':'Ending date',
+            'status':'current status',
+            'employee':'Assigned employees'
+
+        }
+
+        widgets = {
+            'p_name':forms.TextInput(
+                    attrs={
+                        'placeholder':'Enter project name'
+                    }
+                ),
+            'start_date':forms.DateInput(
+                    attrs={
+                         'placeholder':'Enter start date',
+                         'type':'date',
+                         }
+                    ),
+                    
+
+            'deadline':forms.DateInput(
+                     attrs={
+                         'placeholder':'Enter deadline',
+                          'type':'date',
+                     }
+            ),
+                    
+            
+                    
+        }
+    def clean_p_name(self):
+            p_name = self.cleaned_data.get('p_name')
+    
+            
+            pattern = r"^[A-Za-z]+ [A-Za-z]+$"
+    
+            if not re.match(pattern,p_name):
+                print('error')
+                raise forms.ValidationError("please Enter a valid name")
+    
+            return p_name
+    def clean(self):
+        cleaned_data = super().clean()
+        start_date = cleaned_data.get('start_date')
+        deadline = cleaned_data.get('deadline')
+
+        if start_date and deadline:
+            if start_date >= deadline:
+                raise ValidationError("Deadline must be after the start date.")
+
+        
+        return cleaned_data
