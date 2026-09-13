@@ -1,5 +1,5 @@
 from django import forms
-from .models import Employee,Department,Project
+from .models import Employee,Department,Project,Profile
 import re
 from django.core.exceptions import ValidationError
 from django.utils import timezone
@@ -166,3 +166,29 @@ class ProjectForm(forms.ModelForm):
 
         
         return cleaned_data
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['contact', 'address',]  
+
+        widgets ={
+            'contact':forms.TelInput(
+                attrs={
+                    'placeholder':'Enter contact',
+                    'max_length':10,
+                }
+            ),
+            'address':forms.Textarea(
+                attrs={
+                    'placeholder':'Enter address',
+                    'row':6,
+                    'col':10,
+                }
+            )
+        }
+
+        labels = {
+            'contact':"employee Contact",
+            'address':'Address'
+        }

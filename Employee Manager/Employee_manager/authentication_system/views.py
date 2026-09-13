@@ -23,7 +23,7 @@ def login_view(request):
                 login(request,user)
                 role = user.employee.role
                 if role =='employee':
-                    return redirect('admin-home')
+                    return redirect('emp-home')
                 else:
                     return redirect('admin-home')
             else:

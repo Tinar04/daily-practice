@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{employee.name}}{% endblock title %}
+
+{% block extra_css %}{% endblock extra_css %}
+
+
+ {% block content %}
+ <div class="main-container">
+    <table>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+        <tbody>
+            <tr>
+                <td>Email</td>
+                <td>{{employee.email}}</td>
+            </tr>
+            <tr>
+                <td>Role</td>
+                <td>{{employee.role}}</td>
+            </tr>
+            <tr>
+                <td>Contact</td>
+                <td>{{profile.contact}}</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>{{profile.address}}</td>
+            </tr>
+           
+        </tbody>
+    </table>
+    <button><a href="{% url 'update_profile' %}">Edit Profile</a></button>
+ </div>
+
+     
+
+{% endblock content %}

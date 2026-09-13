@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Employee Home{% endblock title %}
+
+{% block extra_css %}{% endblock extra_css %}
+
+{% block content %}
+
+<h1>Welcome, {{ employee.name }}</h1>
+
+<div class="box">
+    <h3>Department</h3>
+    <p>{{ department.d_name }}</p>
+</div>
+
+<div class="box">
+    <h3>Assigned Projects</h3>
+    <ul>
+        {% for project in projects %}
+            <li>
+                <a href="{% url 'project_detail' project.id %}">{{ project.p_name }}</a> - {{ project.status }}
+            </li>
+        {% empty %}
+            <li>No projects assigned yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="box">
+    <button><a href="{% url 'profile' %}">My Profile</a></button>
+</div>
+
+{% endblock content %}

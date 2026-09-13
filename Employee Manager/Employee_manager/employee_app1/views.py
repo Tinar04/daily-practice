@@ -1,4 +1,4 @@
-from .forms import EmployeeForm,DepartmentForm,ProjectForm
+from .forms import EmployeeForm,DepartmentForm,ProjectForm,ProfileForm
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from authentication_system.custome import role_required
@@ -12,13 +12,23 @@ from django.http import HttpResponse
 @login_required
 @role_required
 def display_employee_view(request):
-    # print("Entered the display view-----------------------------------------------------------------------------------------------")
     employee = Employee.objects.all()
+    departments = Department.objects.all()
+
+    search = request.GET.get('search')
+    department_id = request.GET.get('department')
+
+    if search:
+        employee = employee.filter(name__icontains=search)
+
+    if department_id:
+        employee = employee.filter(department_id=department_id)
 
     context = {
-        'employees':employee,
+        'employees': employee,
+        'departments': departments
     }
-    return render(request,'display_employee.html',context)
+    return render(request, 'display_employee.html', context)
 
 
 # ------------ Add Employee------------------
@@ -96,7 +106,8 @@ def delete_employee_view(request,emp_id):
 # -----Department Table Crud For Admin---------
 
 # show all tables
-
+@login_required
+@role_required
 def department_list(request):
     department = Department.objects.all()
     print(department)
@@ -109,7 +120,8 @@ def department_list(request):
     return render(request,'department.html',context)
 
 # add department
-
+@login_required
+@role_required
 def create_department(request):
 
     if request.method =="POST":
@@ -138,7 +150,8 @@ def create_department(request):
 
 
 #update on deparment table---------------------------
-
+@login_required
+@role_required
 def update_department(request,dept_id):
     try:
         department = Department.objects.get(id = dept_id)
@@ -161,7 +174,8 @@ def update_department(request,dept_id):
     return render(request,'update.html',context)
 
 # -----delete-----
-
+@login_required
+@role_required
 def delete_department(request,dept_id):
 
     try:
@@ -185,6 +199,8 @@ def delete_department(request,dept_id):
 
 
 # ------create a project-------
+@login_required
+@role_required
 def create_project(request):
     if request.method=='POST':
         form = ProjectForm(data=request.POST)
@@ -207,7 +223,8 @@ def create_project(request):
     return render(request,'create_form.html',context)
 
 # -----display a single project-------
-
+@login_required
+@role_required
 def display_one_project(request,p_id):
     try:
         project = Project.objects.get(id=p_id)
@@ -221,7 +238,8 @@ def display_one_project(request,p_id):
 
 
 # --------udate a project------
-
+@login_required
+@role_required
 def update_project_view(request,p_id):
     try:
         project = Project.objects.get(id = p_id)
@@ -244,6 +262,8 @@ def update_project_view(request,p_id):
     return render(request,'update.html',context)
 
 #  ------delete a project----------------
+@login_required
+@role_required
 def delete_project_view(request,p_id):
     try:
         project = Project.objects.get(id = p_id)
@@ -259,3 +279,30 @@ def delete_project_view(request,p_id):
     }
 
     return render(request,'delete.html',context)
+
+
+
+# -------employee viewssssss-----------------------
+
+@login_required
+def employee_profile_view(request):
+    employee = request.user.employee
+    profile = employee.profile
+    context = {'employee': employee, 'profile': profile}
+    return render(request, 'employee_profile.html', context)
+
+@login_required
+def update_profile(request):
+    profile = request.user.employee.profile
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileForm(instance=profile)
+
+    context = {'form': form,
+               'operation':'Apply changes'}
+    return render(request, 'update.html', context)

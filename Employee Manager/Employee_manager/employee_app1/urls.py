@@ -20,5 +20,9 @@ urlpatterns = [
     path('update_project/<int:p_id>',views.update_project_view,name='update_project'),
     path('delete_project/<int:p_id>',views.delete_project_view,name='delete_project'),
 
+
+    path('employee_profile/',views.employee_profile_view,name="profile"),
+    path('update_profile/',views.update_profile,name='update_profile')
+
     
 ]

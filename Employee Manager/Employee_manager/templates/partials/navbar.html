@@ -1,0 +1,16 @@
+<nav>
+    {% if request.user.employee.role == 'admin' %}
+        <a href="{% url 'admin-home' %}">Home</a>
+        <a href="{% url 'display_emp' %}">Employees</a>
+        <a href="{% url 'display_table' %}">Departments</a>
+        
+    {% else %}
+        <a href="{% url 'emp-home' %}">Home</a>
+        <a href="{% url 'profile' %}">My Profile</a>
+    {% endif %}
+
+    <form method="post" action="{% url 'logout' %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+</nav>
