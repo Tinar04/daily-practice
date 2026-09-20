@@ -51,7 +51,7 @@ def update_task_view(request,task_id):
             task.task_name=form.cleaned_data['task_name']
             task.task_description = form.cleaned_data['task_description']
             task.status = form.cleaned_data['status']
-            form.save()
+            form.save() 
             return redirect('task_form')
 
     # currentdata = {
